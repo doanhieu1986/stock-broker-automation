@@ -1,0 +1,7 @@
+{
+  "tickers": ["VCB", "BID", "VHM", "HPG", "VIC", "MSN", "FPT", "MWG"],
+  "daily_compare_pair": ["VCB", "BID"],
+  "sector": "Ngân hàng",
+  "focus_today": "So sánh tăng trưởng tín dụng Q1 và chất lượng tài sản",
+  "updated_at": "2025-03-26"
+}
