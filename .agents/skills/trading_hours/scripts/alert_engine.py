@@ -3,11 +3,15 @@ skills/trading_hours/scripts/alert_engine.py
 Engine phát hiện và phân loại cảnh báo biến động giá và khối lượng.
 """
 
+import sys
 from datetime import datetime, time as dtime
 from collections import defaultdict
+from pathlib  import Path
+
+sys.path.insert(0, str(Path(__file__).parents[4]))
 
 from utils.api_client  import fetch_cafef_index
-from utils.data_loader import today
+from utils.data_loader import load_watchlist, save_alerts, today
 from utils.logger      import get_logger
 
 log = get_logger(__name__)

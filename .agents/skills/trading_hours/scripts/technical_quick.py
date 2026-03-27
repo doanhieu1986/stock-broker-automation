@@ -13,7 +13,7 @@ from pathlib import Path
 import yfinance as yf
 import pandas as pd
 
-sys.path.insert(0, str(Path(__file__).parents[3]))
+sys.path.insert(0, str(Path(__file__).parents[4]))
 from utils.logger import api_call, section, log_output
 from utils.api_helpers import with_retry, cache_read, output_dir, fmt_pct, fmt_price
 

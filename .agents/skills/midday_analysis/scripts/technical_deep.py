@@ -4,7 +4,10 @@ Bước 2 ca trưa: Phân tích kỹ thuật sâu tối đa 3 mã ưu tiên.
 """
 
 import json
+import sys
 from datetime import datetime
+from pathlib  import Path
+sys.path.insert(0, str(Path(__file__).parents[4]))
 from utils.api_client  import fetch_cafef_quote, fetch_yahoo_history
 from utils.data_loader import load_watchlist, load_alerts, load_customers, output_dir, today
 from utils.technical   import compute_all, one_liner

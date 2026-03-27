@@ -3,9 +3,14 @@ skills/after_hours/scripts/update_broker_kpi.py
 Bước 5: Tổng kết KPI cá nhân cuối ngày.
 """
 import json
+import sys
 from datetime import datetime
-from utils.data_loader import load_alerts, load_realtime_log, output_dir, today
-from utils.logger      import get_logger
+from pathlib  import Path
+sys.path.insert(0, str(Path(__file__).parents[4]))
+from utils.data_loader import (
+    load_cache, load_realtime_log, save_cache, today, load_alerts, output_dir
+)
+from utils.logger import get_logger
 log = get_logger(__name__)
 
 def run():

@@ -2,6 +2,10 @@
 skills/after_hours/scripts/update_watchlist.py
 Bước 4b: Cập nhật watchlist cho ngày mai.
 """
+import sys
+import json
+from pathlib import Path
+sys.path.insert(0, str(Path(__file__).parents[4]))
 from utils.data_loader import load_watchlist, save_watchlist, read_json, DATA_DIR
 from utils.logger      import get_logger
 log = get_logger(__name__)

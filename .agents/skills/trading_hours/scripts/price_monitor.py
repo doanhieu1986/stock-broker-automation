@@ -15,7 +15,7 @@ from pathlib import Path
 
 import requests
 
-sys.path.insert(0, str(Path(__file__).parents[3]))
+sys.path.insert(0, str(Path(__file__).parents[4]))
 from utils.logger import section, log_output, print_box
 from utils.api_helpers import (
     with_retry, output_dir, load_watchlist, load_customers,

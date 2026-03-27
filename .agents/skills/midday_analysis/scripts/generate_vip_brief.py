@@ -3,8 +3,10 @@ skills/midday_analysis/scripts/generate_vip_brief.py
 Bước 3 ca trưa: Tạo báo cáo Word cá nhân hóa cho KH VIP.
 """
 
+import sys
 from datetime import datetime
 from pathlib  import Path
+sys.path.insert(0, str(Path(__file__).parents[4]))
 from docx     import Document
 from docx.shared import Pt, RGBColor
 from utils.api_client  import fetch_cafef_quote

@@ -3,10 +3,11 @@ skills/after_hours/scripts/draft_outreach.py
 Bước 3 ca after-hours: Soạn draft email trả lời KH tồn đọng.
 """
 
+import sys
 from datetime import datetime
 from pathlib  import Path
-
-from utils.data_loader import read_json, output_dir, today, DATA_DIR
+sys.path.insert(0, str(Path(__file__).parents[4]))
+from utils.data_loader import load_customers, load_cache, output_dir, today
 from utils.logger      import get_logger
 
 log = get_logger(__name__)

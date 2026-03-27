@@ -4,14 +4,17 @@ Tổng kết phiên giao dịch sau 15h00.
 Tóm tắt cảnh báo, phân tích on-demand, và bàn giao sang ca midday/EOD.
 """
 
+import sys
 from datetime import datetime
+from pathlib  import Path
+sys.path.insert(0, str(Path(__file__).parents[4]))
 
-from utils.api_client  import fetch_cafef_index, fetch_cafef_top_movers
+from utils.api_client  import fetch_cafef_index
 from utils.data_loader import (
-    load_watchlist, load_alerts, load_realtime_log,
+    load_watchlist, load_realtime_log, load_alerts,
     save_cache, output_dir, today
 )
-from utils.logger import get_logger
+from utils.logger      import get_logger
 
 log = get_logger(__name__)
 

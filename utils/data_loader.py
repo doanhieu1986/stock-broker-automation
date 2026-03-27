@@ -87,9 +87,11 @@ def load_cache(key: str, date_str: str | None = None):
     return read_json(CACHE_DIR/f"{key}_{date_str or today()}.json")
 
 
-def save_cache(key: str, data, date_str: str | None = None) -> bool:
+def save_cache(key: str, data, date_str: str | None = None) -> Path:
     _mk(CACHE_DIR)
-    return write_json(CACHE_DIR/f"{key}_{date_str or today()}.json", data)
+    path = CACHE_DIR/f"{key}_{date_str or today()}.json"
+    write_json(path, data)
+    return path
 
 
 # ── Alerts ────────────────────────────────────────────────────────────────
@@ -142,5 +144,7 @@ def load_eod_summary(date_str: str | None = None) -> dict:
     return data
 
 
-def save_eod_summary(data, date_str: str | None = None) -> bool:
-    return write_json(DATA_DIR/f"eod_summary_{date_str or today()}.json", data)
+def save_eod_summary(data, date_str: str | None = None) -> Path:
+    path = DATA_DIR/f"eod_summary_{date_str or today()}.json"
+    write_json(path, data)
+    return path

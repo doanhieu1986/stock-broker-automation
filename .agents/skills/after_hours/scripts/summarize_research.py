@@ -3,12 +3,14 @@ skills/after_hours/scripts/summarize_research.py
 Bước 2 ca after-hours: Tìm và tóm tắt báo cáo phân tích CTCK mới.
 """
 
+import sys
 from datetime import datetime
 from pathlib  import Path
+sys.path.insert(0, str(Path(__file__).parents[4]))
 
 from utils.api_client  import fetch_rss
-from utils.data_loader import load_watchlist, output_dir, today
-from utils.logger      import get_logger
+from utils.data_loader import cache_write, today
+from utils.logger      import api_call, section, get_logger
 
 log = get_logger(__name__)
 

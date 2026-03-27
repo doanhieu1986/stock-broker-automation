@@ -3,7 +3,10 @@ skills/midday_analysis/scripts/summarize_morning_session.py
 Bước 1 ca trưa: Tóm tắt phiên sáng từ log realtime.
 """
 
+import sys
 from datetime import datetime
+from pathlib  import Path
+sys.path.insert(0, str(Path(__file__).parents[4]))
 from utils.api_client  import fetch_cafef_index
 from utils.data_loader import load_watchlist, load_realtime_log, load_alerts, save_cache, today
 from utils.logger      import get_logger

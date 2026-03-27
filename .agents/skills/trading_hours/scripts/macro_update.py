@@ -4,8 +4,10 @@ Chế độ 3 — Cập nhật vĩ mô mỗi 2 tiếng: 9h30, 11h30, 13h30, 15h0
 Gọi độc lập hoặc qua scheduler trong price_monitor.
 """
 
+import sys
 from datetime import datetime
-
+from pathlib  import Path
+sys.path.insert(0, str(Path(__file__).parents[4]))
 from utils.api_client  import fetch_yahoo_quote, fetch_usd_vnd, fetch_rss
 from utils.data_loader import load_realtime_log, save_cache, today
 from utils.logger      import get_logger

@@ -3,9 +3,10 @@ skills/eod_report/scripts/prepare_customer_contact.py
 Bước 3 ca EOD: Soạn ghi chú liên hệ cá nhân hóa cho từng KH.
 """
 
+import sys
 from datetime import datetime
 from pathlib  import Path
-
+sys.path.insert(0, str(Path(__file__).parents[4]))
 from utils.api_client  import fetch_cafef_quote
 from utils.data_loader import (
     load_customers, load_cache, load_alerts,

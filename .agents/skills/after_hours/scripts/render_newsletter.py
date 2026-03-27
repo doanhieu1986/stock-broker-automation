@@ -3,10 +3,11 @@ skills/after_hours/scripts/render_newsletter.py
 Bước 1 ca after-hours: Soạn newsletter HTML từ eod_summary.
 """
 
+import sys
 from datetime import datetime
 from pathlib  import Path
-
-from utils.data_loader import load_eod_summary, output_dir, today
+sys.path.insert(0, str(Path(__file__).parents[4]))
+from utils.data_loader import load_cache, output_dir, today
 from utils.logger      import get_logger
 
 log = get_logger(__name__)

@@ -20,7 +20,7 @@ try:
 except ImportError:
     HAS_PDF = False
 
-sys.path.insert(0, str(Path(__file__).parents[3]))
+sys.path.insert(0, str(Path(__file__).parents[4]))
 from utils.logger import section, Timer, log_output, print_box
 from utils.api_helpers import (
     cache_read, output_dir, load_watchlist, fmt_pct,

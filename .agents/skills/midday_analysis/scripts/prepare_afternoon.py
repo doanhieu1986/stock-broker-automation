@@ -3,7 +3,10 @@ skills/midday_analysis/scripts/prepare_afternoon.py
 Bước 4 ca trưa: In tóm tắt chuẩn bị phiên chiều 13h00.
 """
 
+import sys
 from datetime import datetime
+from pathlib  import Path
+sys.path.insert(0, str(Path(__file__).parents[4]))
 from utils.data_loader import load_cache, load_alerts, output_dir, today
 from utils.logger      import get_logger
 

@@ -15,6 +15,8 @@ Usage:
 """
 
 import argparse, sys
+from pathlib import Path
+sys.path.insert(0, str(Path(__file__).parent / ".agents"))
 from datetime import datetime
 from utils.logger import get_logger
 

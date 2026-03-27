@@ -3,7 +3,10 @@ skills/eod_report/scripts/eod_handoff.py
 Bước 4 ca EOD: Tạo file JSON bàn giao sạch cho ca after-hours.
 """
 
+import sys
 from datetime import datetime
+from pathlib  import Path
+sys.path.insert(0, str(Path(__file__).parents[4]))
 
 from utils.data_loader import (
     load_cache, load_alerts, save_eod_summary, output_dir, today

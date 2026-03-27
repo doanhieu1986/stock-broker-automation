@@ -3,13 +3,13 @@ skills/after_hours/scripts/fetch_tomorrow_events.py
 Bước 4a: Lấy lịch sự kiện doanh nghiệp và vĩ mô ngày mai.
 """
 
-from datetime import datetime, timedelta
+import sys
+from datetime import datetime, date, timedelta
 from pathlib  import Path
-
-import requests
-
-from utils.data_loader import load_watchlist, output_dir, tomorrow, today
-from utils.logger      import get_logger
+sys.path.insert(0, str(Path(__file__).parents[4]))
+from utils.api_client  import fetch_yahoo_quote
+from utils.data_loader import load_watchlist, cache_write, today
+from utils.logger      import api_call, section, get_logger
 
 log = get_logger(__name__)
 
