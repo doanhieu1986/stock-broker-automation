@@ -21,7 +21,7 @@ from utils.logger import get_logger
 log = get_logger("run")
 
 
-def run_session(session: str, dry_run: bool = False):
+def run_session(session: str, dry_run: bool = False, step: int = None):
     log.info("═"*55)
     log.info(f"  SESSION: {session.upper()}")
     log.info("═"*55)
@@ -38,8 +38,9 @@ def run_session(session: str, dry_run: bool = False):
 
     elif session == "trading":
         from skills.trading_hours.scripts.price_monitor  import run as s1
-        from skills.trading_hours.scripts.session_summary import run as s2
-        steps = [("Monitor realtime",s1),("Tổng kết phiên",s2)]
+        from skills.trading_hours.scripts.macro_update    import run as s2
+        from skills.trading_hours.scripts.session_summary import run as s3
+        steps = [("Monitor realtime",s1),("Cập nhật vĩ mô",s2),("Tổng kết phiên",s3)]
 
     elif session == "midday":
         from skills.midday_analysis.scripts.summarize_morning_session import run as s1
@@ -64,9 +65,12 @@ def run_session(session: str, dry_run: bool = False):
         from skills.after_hours.scripts.fetch_tomorrow_events import run as s4
         steps = [("Newsletter",s1),("Báo cáo CTCK",s2),
                  ("Draft email KH",s3),("Sự kiện ngày mai",s4)]
-    else:
-        log.error(f"Session không hợp lệ: {session}")
-        return
+    if step is not None:
+        if 1 <= step <= len(steps):
+            steps = [steps[step - 1]]
+        else:
+            log.error(f"Step {step} không hợp lệ cho session {session} (1-{len(steps)})")
+            return
 
     for label, fn in steps:
         log.info(f"► {label}")
@@ -128,6 +132,7 @@ def main():
     group.add_argument("--task",    metavar="TASK")
     group.add_argument("--check-apis", action="store_true")
     group.add_argument("--logs",    metavar="DATE")
+    parser.add_argument("--step",     type=int, help="Chạy bước cụ thể (1, 2, ...)")
     parser.add_argument("--dry-run",  action="store_true")
     parser.add_argument("--preview",  action="store_true")
     parser.add_argument("args",       nargs="*")
@@ -137,7 +142,7 @@ def main():
     if opts.dry_run: log.warning("DRY-RUN MODE")
 
     if opts.session:
-        run_session(opts.session, dry_run=opts.dry_run)
+        run_session(opts.session, dry_run=opts.dry_run, step=opts.step)
     elif opts.task:
         run_task(opts.task, opts.args, preview=opts.preview)
     elif opts.check_apis:
